@@ -1,0 +1,33 @@
+﻿@model IEnumerable<myshop.Models.Product>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-lg-4 col-sm-6">
+            <div class="product-item">
+                <div class="pi-pic">
+                    <a href="/Products/DetailsProduct/?id=@item.IdProduct">
+                        <img src="~/MyPictures/@item.ImageProduct" alt="@item.Name">
+                    </a>
+                    <div class="pi-links">
+                        <a href="#" class="add-card"><i class="flaticon-bag"></i><span>اضافه کردن به سبد خرید </span></a>
+                        <a href="#" class="wishlist-btn"><i class="far fa-heart"></i></a>
+                    </div>
+                </div>
+                <div class="pi-text text-center mb-5">
+                    <a href="/Products/DetailsProduct/?id=@item.IdProduct">
+                        <h4>@item.Name</h4>
+                        <del><span class="offer">@item.PriceOffer</span></del>
+                        <br>
+                        <h5>@item.Price</h5>
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+    <div class="text-center pt-5 w-100">
+        <button class="site-btn sb-line sb-dark btn-more w-25"> بیشتر</button>
+    </div>
+</div>
+
+

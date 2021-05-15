@@ -1,0 +1,35 @@
+﻿@model IEnumerable<myshop.Models.Product>
+
+<table>
+    <thead>
+        <tr>
+            <th class="product-th">محصول</th>
+            <th class="quy-th">تعداد</th>
+            <th class="">حذف</th>
+            <th class="total-th">قیمت</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class="product-cart">
+                <td class="product-col">
+                    <img src="~/MyPictures/@item.ImageProduct" alt="@item.Name">
+                    <div class="pc-title text-center">
+                        <h4>@item.Name</h4>
+                    </div>
+                </td>
+                <td class="quy-col">
+                    <div class="quantity">
+                        <div class="pro-qty">
+                            <input type="text" value="@item.NumbersOfProduct">
+                        </div>
+                    </div>
+                </td>
+                <td class="size-col"><a href="/Cart/DeleteSelectedCart/?id=@item.IdProduct"><i class="fa fa-trash" aria-hidden="true" id="delete"></i></a></td>
+                <td class="total-col"><h4>@item.Price تومان</h4></td>
+            </tr>
+        }
+    </tbody>
+</table>
+

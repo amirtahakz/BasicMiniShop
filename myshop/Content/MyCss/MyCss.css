@@ -1,0 +1,137 @@
+﻿.icon-hamburger{
+    font-size:37px;
+    cursor:pointer;
+    float: right;
+}
+.icon-hamburger:hover{
+    background-color:rgb(168, 205, 236);
+    border-radius: 50px;
+    transition: 0.3s;
+}
+
+.avatar-pic{
+    border-radius: 50px;
+    margin: 5px 0px 5px 0px;
+    height: 50px;
+    width: 50px;
+
+}
+.head{
+    background-color: cornflowerblue;
+    height: 60px;
+}
+.id-user{
+    direction: rtl;
+    margin-top: 5px;
+    margin-bottom: -1px;
+
+}
+.info-user{
+    margin-left: 7px;
+}
+.user{
+    display: flex;
+    cursor:pointer;
+    border-radius: 10px;
+}
+.user:hover{
+    background-color:rgb(168, 205, 236);
+}
+.all-head{
+    display: flex;
+    justify-content: space-between;
+}
+.side-nav{
+    margin-right: -15px;
+    margin-top: -10px;
+    background-color: cornflowerblue;
+    height: 701px;
+    direction: rtl;
+    z-index: 1;
+    overflow-x: hidden;
+    padding-top: 60px;
+    float: right;
+
+}
+.side-nav a{
+    padding: 8px 8px 8px 8px;
+    text-decoration: none;
+    font-size: 25px;
+    color: black;
+    display: block;
+    text-align: right;
+    transition: 0.3s;
+}
+.side-nav a:hover{
+    background-color: rgb(168, 205, 236);
+    border-top-right-radius: 20px ;
+    border-bottom-right-radius: 20px ;
+    text-decoration: none;
+}
+#all-nav{
+    display: none;
+    width: 250px;
+}
+.closebtn{
+    position: absolute;
+    margin-right: 205px;
+    margin-top: -54px;
+    padding: 0px 8px 0px 8px;
+    text-decoration: none;
+    font-size: 25px;
+    color: black;
+    display: block;
+    text-align: right;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.closebtn:hover{
+    background-color: rgb(168, 205, 236);
+    border-radius: 40px;
+ 
+}
+.div1{
+    background-color: white;
+    height: 694px;
+    margin-top:60px;
+}
+.div2 {
+    display: none;
+    background-color: white;
+    height: 694px;
+    margin-top: 60px;
+}
+.div3 {
+    display: none;
+    background-color: white;
+    height: 694px;
+    margin-top: 60px;
+}
+.div4 {
+    display: none;
+    background-color: white;
+    height: 694px;
+    margin-top: 60px;
+}
+.all-info-user{
+
+    height: 103px;
+    width: 198px;
+    background-color: white;
+    float: left;
+    border-radius: 5px;
+    z-index: 1;
+    position: absolute;
+    margin-left: 15px;
+    margin-top: -2px;
+    opacity: 85%;
+    display: none;
+}
+.ConfirmDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:100%;
+    width:100%;
+
+}

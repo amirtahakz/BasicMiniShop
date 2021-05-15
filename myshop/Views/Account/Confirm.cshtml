@@ -1,0 +1,40 @@
+﻿@{
+    Layout = null;
+}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>ConfirmAccount</title>
+    <link href="~/Content/MyCss/MyCss.css" rel="stylesheet" />
+    <link href="~/Content/MyCss/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="ConfirmDiv">
+        <div class="col-md-6 col-xl-6">
+            <div class="alert alert-warning" id="previous">
+                <strong>Confirm Your Account</strong>
+                <input type="submit" class="btn btn-warning" value="Confirm" onclick="Verified()" />
+            </div>
+            <div class="alert alert-success" id="after" style="display:none">
+                <strong><span class="glyphicon glyphicon-ok"></span> Your Account Is Active Now</strong>
+            </div>
+        </div>
+    </div>
+    <script>
+        function Verified() {
+    $.ajax({
+        type: "post",
+        url: "/Account/RegisterConfirm",
+        data: { 'regId': '@ViewBag.regID' },
+        success: function (msg) {
+            $("#previous").hide();
+            $("#after").show();
+            alert(msg);
+            window.location.href = "https://localhost:44333/Home/Index";
+        }
+    })
+}
+    </script>
+    <script src="~/Scripts/MyScript/jquery-3.2.1.min.js"></script>
+    <script src="~/Scripts/MyScript/bootstrap.min.js"></script>
+</body>
+</html>

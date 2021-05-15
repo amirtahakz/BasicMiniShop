@@ -1,0 +1,340 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>قالب فروشگاهی دیجی آنلاین</title>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <!-- Favicon -->
+    <link href="~/Content/UserSideFiles/img/favicon.ico" rel="shortcut icon" />
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,300i,400,400i,700,700i" rel="stylesheet">
+
+
+    <!-- Stylesheets -->
+    <link href="~/Content/UserSideFiles/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" integrity="sha512-xA6Hp6oezhjd6LiLZynuukm80f8BoZ3OpcEYaqKoCV3HKQDrYjDE1Gu8ocxgxoXmwmSzM4iqPvCsOkQNiu41GA==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.4.5/css/swiper.min.css" integrity="sha512-uCQmAoax6aJTxC03VlH0uCEtE0iLi83TW1Qh6VezEZ5Y17rTrIE+8irz4H4ehM7Fbfbm8rb30OkxVkuwhXxrRg==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="~/Content/UserSideFiles/css/flaticon.css" />
+    <link rel="stylesheet" href="~/Content/UserSideFiles/css/slicknav.min.css" />
+    <link rel="stylesheet" href="~/Content/UserSideFiles/css/jquery-ui.min.css" />
+    <link rel="stylesheet" href="~/Content/UserSideFiles/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="~/Content/UserSideFiles/css/animate.css" />
+    <link rel="stylesheet" href="~/Content/UserSideFiles/css/login.css">
+    <link rel="stylesheet" href="~/Content/UserSideFiles/css/style.css" />
+    
+
+    @RenderSection("css", required: false)
+</head>
+<body>
+    <!-- Alerts -->
+    <!-- Alerts End -->
+    <!-- Header section -->
+    <header class="header-section">
+        <div class="header-top">
+            <div class="container">
+                <div class="row" style="direction: rtl;">
+                    <div class="col-lg-2 text-center text-lg-left">
+                        <!-- logo -->
+                        <a href="https://localhost:44333/" class="site-logo">
+                            <img src="~/MyPictures/logo.png" alt="logo" />
+                        </a>
+                    </div>
+                    <div class="col-xl-6 col-lg-5">
+                        <form class="header-search-form">
+                            <input type="text" placeholder="جستجو در ...">
+                            <button><i class="glyphicon glyphicon-search"></i></button>
+                        </form>
+                    </div>
+                    <div class="col-xl-4 col-lg-5">
+                        <div class="user-panel">
+                            @if (Session["Email"] != null)
+                            {
+                                <div class="up-item">
+                                    <a href="/Profile/MyProfile/?id=@Session["UserId"]" data-toggle="modal">سلام @Session["Email"]</a>
+                                    <input type="text" style="display:none;" id="UserId" value="@Session["UserId"]"/>
+                                    <i>
+                                        <img src="~/Content/UserSideFiles/img/user.svg" style="height:20px;width:20px;" />
+                                    </i>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="up-item">
+                                    <a href="#" data-toggle="modal" data-target="#centralModalLogin">عضویت</a>
+                                    <i>
+                                        <img src="~/Content/UserSideFiles/img/user.svg" style="height:20px;width:20px;"/>
+                                    </i>
+
+                                </div>
+                            }
+                            <div class="up-item mr-3">
+                                <div class="shopping-card">
+                                    <a href="https://localhost:44333/Cart/MyCart">سبد خرید</a>
+                                    <i>
+                                        <img src="~/Content/UserSideFiles/img/shopping-cart.svg" style="height:20px;width:20px;"/>
+                                    </i>
+                                    <span>0</span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="main-navbar">
+            <div class="container">
+                <!-- menu -->
+                <ul class="main-menu">
+
+                    <li>
+                        <a href="index.html">صفحه اصلی</a>
+                        <ul class="sub-menu">
+                            <li><a href="index.html">خانه 1</a></li>
+                            <li><a href="index2.html">خانه 2</a></li>
+                            <li><a href="index3.html">خانه 3</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="https://localhost:44333/Products/Categorys">دسته بندی کالا</a>
+                        <ul class="sub-menu">
+                            <li><a href="#">کالای دیجیتال</a></li>
+                            <li><a href="#">آرایش بهداشتی</a></li>
+                            <li><a href="#">مد و پوشاک</a></li>
+                            <li><a href="#">خانه و آشپزخانه</a></li>
+                            <li><a href="#">خوردنی و آشامیدنی</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="interest.html"> علاقه مندی</a></li>
+                    <li><a href="index2.html"> تخفیف ها و پیشنهادها<span class="new">جدید</span></a>	</li>
+
+                    <li><a href="aboutUs.html">درباره ما</a></li>
+                    <li><a href="contact.html"> ارتباط با ما </a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- Header section end -->
+
+
+    @RenderBody()
+
+
+    @*modal login*@
+    <div class="modal fade" id="centralModalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-md login" role="document">
+            <div class="modal-content modal-login">
+                <div class="modal-body">
+                    <div class="modal-header login-header">
+
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="login-wrap">
+                        <div class="login-html">
+                            <input id="tab-1" type="radio" name="tab" class="sign-in" checked>
+                            <label for="tab-1" class="tab">ورود </label>
+                            <input id="tab-2" type="radio" name="tab" class="sign-up">
+                            <label for="tab-2" class="tab">
+                                ثبت نام
+                            </label>
+                            <div class="login-form mt-3">
+                                <form id="login-form">
+                                    <div class="sign-in-htm">
+                                        <div class="group">
+                                            <label for="EmailForLogin" class="label"> ایمیل </label>
+                                            <input id="EmailForLogin" type="text" class="input">
+                                        </div>
+                                        <div class="group">
+                                            <label for="PasswordForLogin" class="label">رمزعبور</label>
+                                            <input id="PasswordForLogin" type="password" class="input" data-type="password">
+                                        </div>
+                                        <div class="group">
+                                            <input id="check" type="checkbox" class="check" checked>
+                                            <label for="check"><span class="icon"></span> به یاد داشته باش </label>
+                                        </div>
+                                        <div class="group">
+                                            <input type="button" class="button" value=" ورود" style="cursor:pointer;" onclick="Login();">
+                                        </div>
+                                        <div class="hr"></div>
+                                        <div class="foot-lnk">
+                                            <a href="#">
+                                                <label for="tab-2" style="cursor:pointer;"> قبلا ثبت نام کردید؟</label>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </form>
+
+                                <form class="sign-up-htm" id="Registertion">
+                                    <div class="group">
+                                        <label class="label">نام نام خانوادگی</label>
+                                        <input type="text" class="input" id="NameFamily" required>
+                                    </div>
+                                    <div class="group">
+                                        <label for="Password" class="label">رمزعبور</label>
+                                        <input type="password" pattern=".{4,}" class="input" data-type="password" id="Password" required title="رمز کمتر از 4 حرف مجاز نیست">
+                                    </div>
+                                    <div class="group">
+                                        <label for="ConfirmPassword" class="label"> تایید رمزعبور</label>
+                                        <input type="password" pattern=".{4,}" class="input" data-type="password" id="ConfirmPassword" required title="رمز کمتر از 4 حرف مجاز نیست">
+                                    </div>
+                                    <div class="group">
+                                        <label for="Email" class="label"> آدرس ایمیل</label>
+                                        <input type="email" class="input" id="Email" required>
+                                    </div>
+
+                                    <div class="group">
+                                        <input type="submit" class="button" value=" ثبت نام" style="cursor:pointer;" onclick="Register();">
+                                    </div>
+                                    <div class="foot-lnk">
+                                        <a style="cursor:pointer;" onclick="ForgotPasswordPage();"> فراموشی رمزعبور؟</a>
+                                    </div>
+
+                                </form>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    @*end modal login*@
+
+
+
+    <a href="#" id="scroll" style="display: none;"><i class="fas fa-arrow-up up-btn"></i></a>
+    <!-- Footer section -->
+    <section class="footer-section">
+        <div class="footer_top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-5 col-sm-7">
+                        <div class="widgets_container contact_us">
+                            <h3>دریافت برنامه</h3>
+                            <div class="aff_content">
+                                <p>برنامه <strong>آنتومی</strong> هم اکنون در گوگل پلی و اپل استور آماده دریافت است.</p>
+                            </div>
+                            <div class="app_img">
+                                <figure class="app_img">
+                                    <a href="#"><img src="img/icon-appstore.png" alt=""></a>
+                                </figure>
+                                <figure class="app_img">
+                                    <a href="#"><img src="img/icon-googleplay.png" alt=""></a>
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-5">
+                        <div class="widgets_container widget_menu">
+                            <h3>اطلاعات</h3>
+                            <div class="footer_menu">
+                                <ul>
+                                    <li><a href="about.html">درباره ما</a></li>
+                                    <li><a href="#">نحوه ارسال</a></li>
+                                    <li><a href="#">محصولات جدید</a></li>
+                                    <li><a href="#">محصولات برتر</a></li>
+                                    <li><a href="my-account.html">حساب کاربری</a></li>
+                                    <li><a href="#">سابقه خرید</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="widgets_container widget_menu">
+                            <h3>حساب کاربری</h3>
+                            <div class="footer_menu">
+                                <ul>
+                                    <li><a href="my-account.html">حساب کاربری</a></li>
+                                    <li><a href="cart.html">سبد خرید</a></li>
+                                    <li><a href="wishlist.html">علاقه‌مندی‌ها</a></li>
+                                    <li><a href="#">کاهش قیمت‌ها</a></li>
+                                    <li><a href="#">سابقه خرید</a></li>
+                                    <li><a href="#">سفارشات بین المللی</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-5 col-sm-6">
+                        <div class="widgets_container widget_menu">
+                            <h3>خدمات مشتری</h3>
+                            <div class="footer_menu">
+                                <ul>
+                                    <li><a href="#">نقشه سایت</a></li>
+                                    <li><a href="my-account.html">حساب کاربری</a></li>
+                                    <li><a href="#">نحوه ارسال</a></li>
+                                    <li><a href="#">سابقه خرید</a></li>
+                                    <li><a href="wishlist.html">علاقه‌مندی‌ها</a></li>
+                                    <li><a href="#">ویژه ها</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-7 col-sm-12">
+                        <div class="widgets_container">
+                            <h3>اطلاعات تماس</h3>
+                            <div class="footer_contact">
+                                <div class="footer_contact_inner">
+                                    <div class="contact_icone">
+                                        <img src="assets/img/icon/icon-phone.png" alt="">
+                                    </div>
+                                    <div class="contact_text">
+                                        <p>
+                                            تلفن تماس 24 ساعته: <br> <strong class="ltr-text">(+98) 123 456 789</strong>
+                                        </p>
+                                    </div>
+                                </div>
+                                <p>تهران، میدان آزادی،بلوار پاسداران، ساختمان آلاله، واحد 46</p>
+                            </div>
+
+                            <div class="footer_social">
+                                <ul>
+                                    <li><a class="facebook" href="#"><i class="fab fa-facebook"></i></a></li>
+                                    <li><a class="twitter" href="#"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a class="instagram" href="#"><i class="fab fa-instagram"></i></a></li>
+                                    <li><a class="linkedin" href="#"><i class="fab fa-linkedin"></i></a></li>
+                                    <li><a class="rss" href="#"><i class="fa fa-rss"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="social-links-warp">
+            <div class="container">
+                <div class="social-links text-center">
+                    <p>تمامی حقوق مادی و معنوی متعلق به دیجی آنلاین می باشد</p>
+                </div>
+
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+
+            </div>
+        </div>
+    </section>
+    <!-- Footer section end -->
+
+    <script src="~/Scripts/MyScript/MyScript.js"></script>
+    <script src="~/Content/UserSideFiles/js/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.4.5/js/swiper.min.js" integrity="sha512-VHsNaV1C4XbgKSc2O0rZDmkUOhMKPg/rIi8abX9qTaVDzVJnrDGHFnLnCnuPmZ3cNi1nQJm+fzJtBbZU9yRCww==" crossorigin="anonymous"></script>
+    <script src="~/Content/UserSideFiles/js/bootstrap.min.js"></script>
+    <script src="~/Content/UserSideFiles/js/jquery.slicknav.min.js"></script>
+    <script src="~/Content/UserSideFiles/js/owl.carousel.min.js"></script>
+    <script src="~/Content/UserSideFiles/js/jquery.nicescroll.min.js"></script>
+    <script src="~/Content/UserSideFiles/js/jquery.zoom.min.js"></script>
+    <script src="~/Content/UserSideFiles/js/jquery-ui.min.js"></script>
+    <script src="~/Content/UserSideFiles/js/main.js"></script>
+    <script src="~/Content/UserSideFiles/js/validate.js"></script>
+
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

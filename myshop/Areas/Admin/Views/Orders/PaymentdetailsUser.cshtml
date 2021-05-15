@@ -1,0 +1,103 @@
+﻿@model IEnumerable<myshop.Models.PaymentDetail>
+
+@{
+    ViewBag.Title = "PaymentdetailsUser";
+}
+@section css{
+    <link href="~/Content/AdminDashboardFiles/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link href="~/Content/AdminDashboardFiles/dist/css/skins/_all-skins.min.css" rel="stylesheet" />
+    <link href="~/Content/AdminDashboardFiles/dist/css/rtl.css" rel="stylesheet" />
+    <style>
+        .example-modal .modal {
+            position: relative;
+            top: auto;
+            bottom: auto;
+            right: auto;
+            left: auto;
+            display: block;
+            z-index: 1;
+        }
+
+        .example-modal .modal {
+            background: transparent !important;
+        }
+    </style>
+}
+
+
+
+<div class="box">
+    <div class="box-header">
+        <h3 class="box-title">محصولات</h3>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+        <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+            <div class="col-sm-12">
+                <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                    <thead>
+                        <tr role="row">
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="مرورگر: activate to sort column ascending">شماره خرید</th>
+                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="موتور رندر: activate to sort column descending"> شماره محصول</th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="مرورگر: activate to sort column ascending"> قیمت محصول</th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="سیستم عامل: activate to sort column ascending"> تعداد محصول</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr role="row" class="odd">
+                                <td>@item.IdPaymentDetail</td>
+                                <td class="sorting_1">@item.IdProduct</td>
+                                <td>@item.ProductPrice</td>
+                                <td>@item.NumbersOfProduct</td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th rowspan="1" colspan="1"> شماره خرید</th>
+                            <th rowspan="1" colspan="1"> شماره محصول</th>
+                            <th rowspan="1" colspan="1">قیمت محصول</th>
+                            <th rowspan="1" colspan="1">تعداد محصول</th>
+
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- /.box-body -->
+</div>
+
+
+
+
+@section scripts{
+    <!-- DataTables -->
+    <script src="~/Content/AdminDashboardFiles/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="~/Content/AdminDashboardFiles/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <!-- SlimScroll -->
+    <script src="~/Content/AdminDashboardFiles/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <!-- FastClick -->
+    <script src="~/Content/AdminDashboardFiles/bower_components/fastclick/lib/fastclick.js"></script>
+    <!-- page script -->
+    <!-- AdminLTE for demo purposes -->
+    <script src="~/Content/AdminDashboardFiles/dist/js/demo.js"></script>
+    <script>
+        $(function () {
+            $('#example1').DataTable()
+            $('#example2').DataTable({
+                'paging': true,
+                'lengthChange': false,
+                'searching': false,
+                'ordering': true,
+                'info': true,
+                'autoWidth': false
+            })
+        })
+    </script>
+}
+

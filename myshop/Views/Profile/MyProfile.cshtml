@@ -1,0 +1,233 @@
+﻿@model myshop.Models.MyUser
+
+@{
+    ViewBag.Title = "MyProfile";
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Profile</title>
+    <link href="~/Content/UserSideFiles/css/profile.css" rel="stylesheet" />
+</head>
+<body>
+
+    <!-- Hero section -->
+    <!-- ---profile--- -->
+
+    <div class="Personal-Information" style="display: block;">
+        <div class="row w-100 mx-auto text-center py-5">
+
+            <div class="col-md-10 mx-auto">
+                <h5 class="text-right py-2 text-white ">اطلاعات شخصی</h5>
+                <table class="table table-bordered profile">
+
+                    <tbody>
+                        <tr>
+
+                            <td class="Bleft-profile Btop-pro w-50">
+                                <div class="form-group">
+                                    <label for="name" class="lableEditeProfile">نام و نام خانوادگی: </label>
+                                    <div>@Model.NameFamily</div>
+
+                                </div>
+                            </td>
+                            <td class="Btop-pro w-50">
+                                <div class="form-group ">
+                                    <label for="name" class="lableEditeProfile">پست الکترونیک:</label>
+                                    <div>@Model.Email</div>
+
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+
+                            <td class="Bleft-profile">
+                                <div class="form-group">
+                                    <label for="name" class="lableEditeProfile">شماره تلفن همراه :</label>
+                                    <div>09383672918</div>
+
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <label for="name" class="lableEditeProfile">کدملی :</label>
+                                    <div>2151234567</div>
+
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+
+                            <td class="Bleft-profile">
+                                <div class="form-group">
+                                    <label for="name" class="lableEditeProfile">آدرس :</label>
+                                    <div>ساری . خ فرهنگ . ساختمان 131</div>
+
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <label for="name" class="lableEditeProfile"> شماره کارت:</label>
+                                    <div>6025 2553 2458 6974</div>
+
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="row w-100 mx-auto text-center">
+                    <a href="#" class="w-100" data-toggle="modal" data-target="#centralModalEditProfile">
+                        <h6 class="text-center w-100"><i class="fa fa-pencil" aria-hidden="true"></i> ویرایش اطلاعات شخصی</h6>
+                    </a>
+                </div>
+            </div>
+
+
+
+
+
+            <!-- --------last order----- -->
+            <div class="row w-100 mx-auto text-center pb-5 pt-5 mt-5">
+                <div class="col-md-10 mx-auto table-responsive">
+                    <h5 class="text-right py-2 "> آخرین سفارشات</h5>
+                    <table class="table profile text-center">
+                        <thead>
+                            <tr class="titr-order">
+                                <th scope="col">#</th>
+                                <th scope="col">شماره سفارش</th>
+                                <th scope="col">تاریخ ثبت سفارش</th>
+                                <th scope="col">مبلغ قابل پرداخت</th>
+                                <th scope="col">مبلغ کل</th>
+                                <th scope="col"> عملیات پرداخت</th>
+                                <th scope="col"> جزییات </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td class="text-primary">DKC-116871323</td>
+                                <td class="text-warning">۲۸ خرداد ۱۳۹۹</td>
+                                <td>0</td>
+                                <td>
+                                    ۲۰۵,۵۰۰
+                                    تومان
+                                </td>
+                                <td class="text-success">پرداخت موفق</td>
+                                <td><a href="#">بیشتر</a></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td class="text-primary">DKC-116871323</td>
+                                <td class="text-warning">۲۸ خرداد ۱۳۹۹</td>
+                                <td>0</td>
+                                <td>
+                                    ۲۰۵,۵۰۰
+                                    تومان
+                                </td>
+                                <td class="text-danger">پرداخت ناموفق</td>
+                                <td><a href="#">بیشتر</a></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td class="text-primary">DKC-116871323</td>
+                                <td class="text-warning">۲۸ خرداد ۱۳۹۹</td>
+                                <td>0</td>
+                                <td>
+                                    ۲۰۵,۵۰۰
+                                    تومان
+                                </td>
+                                <td class="text-success">پرداخت موفق</td>
+                                <td><a href="#">بیشتر</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+
+
+        <!-- --end profile--- -->
+        <!-- edit profile -->
+        <div class="modal fade" id="centralModalEditProfile" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+
+            <!-- Change class .modal-sm to change the size of the modal -->
+            <div class="modal-dialog modal-lg" role="document">
+
+
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <section class="card card-body border mb-0 body current" id="wizard-example-p-0" role="tabpanel" aria-labelledby="wizard-example-h-0" aria-hidden="false">
+                            <div class="profile-tab text-right">
+
+                                <div class="profile-tab__detail profile-tab__detail-active">
+                                    <div class="profile-tab__container">
+                                        <h4 class="profile-tab__title">ویرایش پروفایل</h4>
+                                        <div class="profile-tab__row">
+                                            <div class="row w-100 mx-auto">
+                                                <div class="col-md-6">
+                                                    <div class="profile-tab__col-left">
+                                                        <div class="display-avarta__img">
+                                                            <img src="~/Content/UserSideFiles/img/profile.png" />
+                                                        </div>
+                                                        <form class="text-center">
+                                                            <label class="profile-upload">
+                                                                انتخاب تصویر
+                                                                <input type="file" name="fileToUpload" id="fileToUpload">
+                                                            </label>
+                                                        </form>
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="profile-tab__col-right">
+                                                        <form class="profile-form  mt-3">
+                                                            <label> نام و نام خانوادگی </label>
+                                                            <input type="text">
+                                                            <label> شماره تلفن </label>
+                                                            <input type="text">
+                                                            <label>پست الکترونیک</label>
+                                                            <input type="email" required="">
+                                                            <label>  کدملی </label>
+                                                            <input type="text">
+                                                            <label>  شماره کارت </label>
+                                                            <input type="text">
+                                                            <label>  آدرس </label>
+                                                            <textarea></textarea>
+                                                        </form>
+                                                        <div class="profile-footer ">
+                                                            <button class="profile-button profile-button--save text-center w-100">ثبت</button>
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </section>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- end edit profile -->
+        </div>
+
+</body>
+</html>

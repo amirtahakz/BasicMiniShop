@@ -1,0 +1,32 @@
+﻿@model IEnumerable<myshop.Models.CategoryName>
+    @{ 
+        Layout = null;
+    }
+<div class="form-group">
+    <label>انتخاب دسته بندی</label>
+    <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
+        @foreach (var item in Model)
+        {
+            <option value="@item.IdCategoryName" class="option">@item.Subject</option>
+        }
+    </select>
+</div>
+<button type="button" class="btn btn-block btn-info" onclick="SelectCategory()">ثبت دسته بندی</button>
+<script>
+
+
+    function SelectCategory() {
+        $.ajax({
+            url: '/Product/SelectCategory',
+            type: 'post',
+            data: { Id: $(".option:selected").val(), Subject: $(".option:selected").text() },
+            success: function (data) {
+                alert(data);
+            },
+            error: function (errorThrown) {
+                console.log(errorThrown);
+            }
+        });
+
+    }
+</script>

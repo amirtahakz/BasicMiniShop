@@ -1,0 +1,737 @@
+﻿@model myshop.Models.Product
+@{
+    ViewBag.Title = "DetailsProduct";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>محصول</title>
+</head>
+<body>
+    <!-- Page info -->
+    <div class="page-top-info">
+        <div class="container">
+            <h4>محصولات </h4>
+            <div class="site-pagination">
+                <a href="">صفحه اصلی</a> /
+                <a href="">خرید</a>
+            </div>
+        </div>
+    </div>
+    <!-- Page info end -->
+    <!-- product section -->
+    <section class="product-section">
+        <div class="container">
+            <div class="back-link">
+                <a href="#"> &lt;&lt; بازگشت به لیست خرید </a>
+            </div>
+            <div class="row">
+
+                <div class="col-lg-6">
+                    <div class="product-pic-zoom">
+                        <img class="product-big-img" src="~/MyPictures/@Model.ImageProduct" alt="">
+                    </div>
+                    <div class="product-thumbs" tabindex="1" style="overflow: hidden; outline: none;">
+                        <div class="product-thumbs-track">
+                            <div class="pt active" data-imgbigurl="~/MyPictures/@Model.ImageProduct">
+                                <img src="~/MyPictures/@Model.ImageProduct" alt="">
+                            </div>
+                            <div class="pt" data-imgbigurl="img/product/p21.jpg">
+                                <img src="~/MyPictures/@Model.ImageProduct" alt="">
+                            </div>
+                            <div class="pt" data-imgbigurl="img/product/p21.jpg">
+                                <img src="~/MyPictures/@Model.ImageProduct" alt="">
+                            </div>
+                            <div class="pt" data-imgbigurl="img/product/p21.jpg">
+                                <img src="~/MyPictures/@Model.ImageProduct" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 product-details text-right">
+                    <h2 class="p-title">
+                        @Model.Name
+                    </h2>
+                    <input type="text" value="@Model.Price" style="display:none;" id="PriceProduct" />
+                    <input type="text" value="@Model.Name" style="display:none;" id="NameProduct"/>
+                    <input type="text" value="@Model.ImageProduct" style="display:none;" id="ImagePath" />
+                    <input type="text" value="@Model.IdProduct" style="display:none;" id="IdProduct" />
+                    <h3 class="p-price">@Model.Price تومان</h3>
+                    <h4 class="p-stock">امتیاز </h4>
+                    <div class="p-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star fa-fade"></i>
+                    </div>
+                    <div class="p-review">
+                        <a href="">4</a><a href="">تا فروخته شده </a>
+                    </div>
+                    <div class="fw-size-choose">
+                        <p>اندازه</p>
+                        <div class="sc-item">
+                            <input type="radio" name="sc" id="xs-size">
+                            <label for="xs-size">12</label>
+                        </div>
+                        <div class="sc-item">
+                            <input type="radio" name="sc" id="s-size">
+                            <label for="s-size">14</label>
+                        </div>
+                        <div class="sc-item">
+                            <input type="radio" name="sc" id="m-size" checked="">
+                            <label for="m-size">15.6</label>
+                        </div>
+                        <div class="sc-item">
+                            <input type="radio" name="sc" id="l-size">
+                            <label for="l-size">17</label>
+                        </div>
+                        <div class="sc-item disable">
+                            <input type="radio" name="sc" id="xl-size" disabled>
+                            <label for="xl-size">19</label>
+                        </div>
+                        <div class="sc-item">
+                            <input type="radio" name="sc" id="xxl-size">
+                            <label for="xxl-size">22</label>
+                        </div>
+                    </div>
+                    <div class="quantity">
+                        <p class="pl-5">تعداد</p>
+                        <div class="pro-qty"><input type="text" value="1" id="NumbersOfProduct"></div>
+                    </div>
+                    <a href="#" class="site-btn" onclick="AddToCart()">افزودن به سبد خرید</a>
+                    <div id="accordion" class="accordion-area">
+                        <div class="panel">
+                            <div class="panel-header" id="headingOne">
+                                <button class="panel-link active" data-toggle="collapse" data-target="#collapse1"
+                                        aria-expanded="true" aria-controls="collapse1">
+                                    مشخصات ظاهری
+                                </button>
+                            </div>
+                            <div id="collapse1" class="collapse show" aria-labelledby="headingOne"
+                                 data-parent="#accordion">
+                                <div class="panel-body">
+                                    <h6 class="py-2"> اندازه صفحه نمایش:<span class="pr-2">15.6 اینچ</span></h6>
+                                    <h6 class="py-2"> دقت صفحه نمایش:<span class="pr-2"> Full HD| 1920 x1080</span></h6>
+                                    <h6 class="py-2"> صفحه نمایش مات: <span class="pr-2"> بله </span></h6>
+                                    <h6 class="py-2"> صفحه نمایش لمسی: <span class="pr-2"> خیر</span></h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel">
+                            <div class="panel-header" id="headingTwo">
+                                <button class="panel-link" data-toggle="collapse" data-target="#collapse2"
+                                        aria-expanded="false" aria-controls="collapse2">
+                                    مشخصات فنی
+                                </button>
+                            </div>
+                            <div id="collapse2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                <div class="panel-body">
+                                    <h6 class="py-2"> سیستم عامل: <span class="pr-2"> فاقد سیستم‌عامل </span></h6>
+                                    <h6 class="py-2"> ظرفیت حافظه RAM: <span class="pr-2"> 8 گیگابایت </span></h6>
+                                    <h6 class="py-2"> ظرفیت حافظه داخلی: <span class="pr-2"> یک ترابایت </span></h6>
+                                    <h6 class="py-2"> سازنده پردازنده گرافیکی: <span class="pr-2"> NVIDIA </span></h6>
+                                    <h6 class="py-2"> سری پردازنده: <span class="pr-2"> Core i7</span></h6>
+                                    <h6 class="py-2"> نوع حافظه: <span class="pr-2"> DDR4</span></h6>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel">
+                            <div class="panel-header" id="headingThree">
+                                <button class="panel-link" data-toggle="collapse" data-target="#collapse3"
+                                        aria-expanded="false" aria-controls="collapse3">
+                                    توضیحات
+                                </button>
+                            </div>
+                            <div id="collapse3" class="collapse" aria-labelledby="headingThree"
+                                 data-parent="#accordion">
+                                <div class="panel-body">
+                                    <h6 class="py-2">
+                                        طبقه‌بندی: <span class="pr-2">
+                                            کاربری صنعتی
+                                            مخصوص بازی
+                                            کاربری مالتی‌مدیا
+                                            کاربری عمومی باریک و سبک
+                                        </span>
+                                    </h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="social-sharing">
+                        <a href=""><i class="fa fa-google-plus"></i></a>
+                        <a href=""><i class="fa fa-pinterest"></i></a>
+                        <a href=""><i class="fa fa-facebook"></i></a>
+                        <a href=""><i class="fa fa-twitter"></i></a>
+                        <a href=""><i class="fa fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- product section end -->
+    <!-- --comment--- -->
+    <div class="row w-100 mx-auto text-center pb-4 ">
+        <div class="col-lg-4 col-3 text-left pt-4">
+            <img src="~/Content/UserSideFiles/img/Line 35.png" class="img-fluid w-25 mx-auto border-titr">
+        </div>
+        <div class="col-lg-4 col-6">
+            <h2><b class="font-kalameBlack"> نظر کاربران </b></h2>
+        </div>
+        <div class="col-lg-4 col-3 text-right pt-4">
+            <img src="~/Content/UserSideFiles/img/Line 35.png"
+                 class="img-fluid w-25 mx-auto border-titr">
+        </div>
+    </div>
+    <div class="row ProductBlog mx-auto text-center pt-5 ">
+        <!-- --- -->
+        <!-- Swiper -->
+        <div class="swiper-container swiper-containerBlog swiper-container-initialized swiper-container-horizontal swiper-container-rtl">
+            <div class="swiper-wrapper" style="transform: translate3d(1549px, 0px, 0px); transition-duration: 0ms;">
+
+
+
+
+
+                <div class="swiper-slide" style="width: 486.333px; margin-left: 30px;" data-swiper-slide-index="2">
+                    <div class=" hj-blog p-0">
+                        <div class="row w-100 mx-auto  bgComment text-white">
+                            <div class="col-6 text-right ">
+                                <h6 class="py-2 pr-4 pt-3"><b> نظر کاربران </b></h6>
+                            </div>
+                            <div class="col-6 text-left pt-2">
+                                <div class="p-rating dir-ltr">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star fa-fade"></i>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row w-100 mx-auto py-2">
+                            <div class="col-12 detalis-blog px-4 py-3">
+                                <h6 class="text-right"><b>حمیدرضاجلیور</b></h6><br>
+                                <h6 class="text-justify line-25">
+                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ،
+                                    و
+                                    بااستفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله
+                                    در ستون و سطرآنچنانکه لازم است، و برای شرایط فعلی تکنولوژی مورد
+                                    نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد،
+
+                                </h6>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide" style="width: 486.333px; margin-left: 30px;" data-swiper-slide-index="2">
+                    <div class=" hj-blog p-0">
+                        <div class="row w-100 mx-auto  bgComment text-white">
+                            <div class="col-6 text-right ">
+                                <h6 class="py-2 pr-4 pt-3"><b> نظر کاربران </b></h6>
+                            </div>
+                            <div class="col-6 text-left pt-2">
+                                <div class="p-rating dir-ltr">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star fa-fade"></i>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row w-100 mx-auto py-2">
+                            <div class="col-12 detalis-blog px-4 py-3">
+                                <h6 class="text-right"><b>حمیدرضاجلیور</b></h6><br>
+                                <h6 class="text-justify line-25">
+                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ،
+                                    و
+                                    بااستفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله
+                                    در ستون و سطرآنچنانکه لازم است، و برای شرایط فعلی تکنولوژی مورد
+                                    نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد،
+
+                                </h6>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide" style="width: 486.333px; margin-left: 30px;" data-swiper-slide-index="2">
+                    <div class=" hj-blog p-0">
+                        <div class="row w-100 mx-auto  bgComment text-white">
+                            <div class="col-6 text-right ">
+                                <h6 class="py-2 pr-4 pt-3"><b> نظر کاربران </b></h6>
+                            </div>
+                            <div class="col-6 text-left pt-2">
+                                <div class="p-rating dir-ltr">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star fa-fade"></i>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row w-100 mx-auto py-2">
+                            <div class="col-12 detalis-blog px-4 py-3">
+                                <h6 class="text-right"><b>حمیدرضاجلیور</b></h6><br>
+                                <h6 class="text-justify line-25">
+                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ،
+                                    و
+                                    بااستفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله
+                                    در ستون و سطرآنچنانکه لازم است، و برای شرایط فعلی تکنولوژی مورد
+                                    نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد،
+
+                                </h6>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide" style="width: 486.333px; margin-left: 30px;" data-swiper-slide-index="2">
+                    <div class=" hj-blog p-0">
+                        <div class="row w-100 mx-auto  bgComment text-white">
+                            <div class="col-6 text-right ">
+                                <h6 class="py-2 pr-4 pt-3"><b> نظر کاربران </b></h6>
+                            </div>
+                            <div class="col-6 text-left pt-2">
+                                <div class="p-rating dir-ltr">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star fa-fade"></i>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row w-100 mx-auto py-2">
+                            <div class="col-12 detalis-blog px-4 py-3">
+                                <h6 class="text-right"><b>حمیدرضاجلیور</b></h6><br>
+                                <h6 class="text-justify line-25">
+                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ،
+                                    و
+                                    بااستفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله
+                                    در ستون و سطرآنچنانکه لازم است، و برای شرایط فعلی تکنولوژی مورد
+                                    نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد،
+
+                                </h6>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide" style="width: 486.333px; margin-left: 30px;" data-swiper-slide-index="2">
+                    <div class=" hj-blog p-0">
+                        <div class="row w-100 mx-auto  bgComment text-white">
+                            <div class="col-6 text-right ">
+                                <h6 class="py-2 pr-4 pt-3"><b> نظر کاربران </b></h6>
+                            </div>
+                            <div class="col-6 text-left pt-2">
+                                <div class="p-rating dir-ltr">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star fa-fade"></i>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row w-100 mx-auto py-2">
+                            <div class="col-12 detalis-blog px-4 py-3">
+                                <h6 class="text-right"><b>حمیدرضاجلیور</b></h6><br>
+                                <h6 class="text-justify line-25">
+                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ،
+                                    و
+                                    بااستفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله
+                                    در ستون و سطرآنچنانکه لازم است، و برای شرایط فعلی تکنولوژی مورد
+                                    نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد،
+
+                                </h6>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide" style="width: 486.333px; margin-left: 30px;" data-swiper-slide-index="2">
+                    <div class=" hj-blog p-0">
+                        <div class="row w-100 mx-auto  bgComment text-white">
+                            <div class="col-6 text-right ">
+                                <h6 class="py-2 pr-4 pt-3"><b> نظر کاربران </b></h6>
+                            </div>
+                            <div class="col-6 text-left pt-2">
+                                <div class="p-rating dir-ltr">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star fa-fade"></i>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row w-100 mx-auto py-2">
+                            <div class="col-12 detalis-blog px-4 py-3">
+                                <h6 class="text-right"><b>حمیدرضاجلیور</b></h6><br>
+                                <h6 class="text-justify line-25">
+                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ،
+                                    و
+                                    بااستفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله
+                                    در ستون و سطرآنچنانکه لازم است، و برای شرایط فعلی تکنولوژی مورد
+                                    نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد،
+
+                                </h6>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets">
+                <span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button"
+                      aria-label="Go to slide 1"></span><span class="swiper-pagination-bullet" tabindex="0" role="button"
+                                                              aria-label="Go to slide 2"></span><span class="swiper-pagination-bullet" tabindex="0" role="button"
+                                                                                                      aria-label="Go to slide 3"></span><span class="swiper-pagination-bullet" tabindex="0" role="button"
+                                                                                                                                              aria-label="Go to slide 4"></span><span class="swiper-pagination-bullet" tabindex="0" role="button"
+                                                                                                                                                                                      aria-label="Go to slide 5"></span>
+            </div>
+
+            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span><span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+        </div>
+        <!-- ---- -->
+
+
+    </div>
+    <!-- ---end comment--- -->
+    <!-- Related product section -->
+
+    <div class="container-fluid width-85 mx-auto my-5">
+        <div class="row w-100 mx-auto text-center py-5">
+            <div class="col-lg-4 col-md-4 col-3 text-left pt-4">
+                <img src="~/Content/UserSideFiles/img/Line 35.png" class="img-fluid w-md-25 mx-auto border-titr">
+            </div>
+            <div class="col-lg-4 col-md-4 col-6 pt-2">
+                <h2><b class="font-kalameBlack">  محصولات پربازدید </b></h2>
+            </div>
+            <div class="col-lg-4 col-md-4 col-3 text-right pt-4"> <img src="~/Content/UserSideFiles/img/Line 35.png" class="img-fluid w-md-25 mx-auto border-titr"></div>
+        </div>
+        <div class="swiper-container swiper-containerInterest swiper-container-initialized swiper-container-horizontal swiper-container-rtl" style="cursor: grab;">
+            <div class="swiper-wrapper" style="transform: translate3d(2241.75px, 0px, 0px); transition-duration: 0ms;">
+                <div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active" data-swiper-slide-index="3" style="width: 300.25px; margin-left: 20px;">
+                    <div class="product-item">
+                        <div class="pi-pic">
+                            <a href="product.html">
+                                <img src="~/Content/UserSideFiles/img/product/p23.jpg" alt="">
+                            </a>
+                            <div class="pi-links">
+                                <a href="cart.html" class="add-card"><i class="flaticon-bag"></i><span>اضافه کردن به سبد خرید </span></a>
+                                <a href="#" class="wishlist-btn"><i class="far fa-heart"></i></a>
+                            </div>
+                        </div>
+                        <div class="pi-text text-center mb-5">
+                            <h4>سامسونگ A30s</h4>
+                            <del><span class="offer">3,800,000تومان</span></del>
+                            <br>
+                            <h5>3,600,000تومان</h5>
+
+                        </div>
+                    </div>
+                </div><div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-next" data-swiper-slide-index="4" style="width: 300.25px; margin-left: 20px;">
+                    <div class="product-item">
+                        <div class="pi-pic">
+                            <a href="product.html">
+                                <img src="~/Content/UserSideFiles/img/product/p10.jpg" alt="">
+                            </a>
+                            <div class="pi-links">
+                                <a href="cart.html" class="add-card"><i class="flaticon-bag"></i><span>اضافه کردن به سبد خرید </span></a>
+                                <a href="#" class="wishlist-btn"><i class="far fa-heart"></i></a>
+                            </div>
+                        </div>
+                        <div class="pi-text text-center mb-5">
+                            <h4>سامسونگ A30s</h4>
+                            <del><span class="offer">3,800,000تومان</span></del>
+                            <br>
+                            <h5>3,600,000تومان</h5>
+
+                        </div>
+                    </div>
+                </div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="5" style="width: 300.25px; margin-left: 20px;">
+                    <div class="product-item">
+                        <div class="pi-pic">
+                            <a href="product.html">
+                                <img src="~/Content/UserSideFiles/img/product/p46.jpg" alt="">
+                            </a>
+                            <div class="pi-links">
+                                <a href="cart.html" class="add-card"><i class="flaticon-bag"></i><span>اضافه کردن به سبد خرید </span></a>
+                                <a href="#" class="wishlist-btn"><i class="far fa-heart"></i></a>
+                            </div>
+                        </div>
+                        <div class="pi-text text-center mb-5">
+                            <h4>سامسونگ A30s</h4>
+                            <del><span class="offer">3,800,000تومان</span></del>
+                            <br>
+                            <h5>3,600,000تومان</h5>
+
+                        </div>
+                    </div>
+                </div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="6" style="width: 300.25px; margin-left: 20px;">
+                    <div class="product-item">
+                        <div class="pi-pic">
+                            <a href="product.html">
+                                <img src="~/Content/UserSideFiles/img/product/p3.jpg" alt="">
+                            </a>
+                            <div class="pi-links">
+                                <a href="cart.html" class="add-card"><i class="flaticon-bag"></i><span>اضافه کردن به سبد خرید </span></a>
+                                <a href="#" class="wishlist-btn"><i class="far fa-heart"></i></a>
+                            </div>
+                        </div>
+                        <div class="pi-text text-center mb-5">
+                            <h4>سامسونگ A30s</h4>
+                            <del><span class="offer">3,800,000تومان</span></del>
+                            <br>
+                            <h5>3,600,000تومان</h5>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide" data-swiper-slide-index="0" style="width: 300.25px; margin-left: 20px;">
+
+                    <div class="product-item">
+                        <div class="pi-pic">
+                            <a href="product.html">
+                                <img src="~/Content/UserSideFiles/img/product/p23.jpg" alt="">
+                            </a>
+                            <div class="pi-links">
+                                <a href="cart.html" class="add-card"><i class="flaticon-bag"></i><span>اضافه کردن به سبد خرید </span></a>
+                                <a href="#" class="wishlist-btn"><i class="far fa-heart"></i></a>
+                            </div>
+                        </div>
+                        <div class="pi-text text-center mb-5">
+                            <h4>سامسونگ A30s</h4>
+                            <del><span class="offer">3,800,000تومان</span></del>
+                            <br>
+                            <h5>3,600,000تومان</h5>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide" data-swiper-slide-index="1" style="width: 300.25px; margin-left: 20px;">
+                    <div class="product-item">
+                        <div class="pi-pic">
+                            <a href="product.html">
+                                <img src="~/Content/UserSideFiles/img/product/p8.jpg" alt="">
+                            </a>
+                            <div class="pi-links">
+                                <a href="cart.html" class="add-card"><i class="flaticon-bag"></i><span>اضافه کردن به سبد خرید </span></a>
+                                <a href="#" class="wishlist-btn"><i class="far fa-heart"></i></a>
+                            </div>
+                        </div>
+                        <div class="pi-text text-center mb-5">
+                            <h4>سامسونگ A30s</h4>
+                            <del><span class="offer">3,800,000تومان</span></del>
+                            <br>
+                            <h5>3,600,000تومان</h5>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide swiper-slide-prev" data-swiper-slide-index="2" style="width: 300.25px; margin-left: 20px;">
+                    <div class="product-item">
+                        <div class="pi-pic">
+                            <a href="product.html">
+                                <img src="~/Content/UserSideFiles/img/product/p37.jpg" alt="">
+                            </a>
+                            <div class="pi-links">
+                                <a href="cart.html" class="add-card"><i class="flaticon-bag"></i><span>اضافه کردن به سبد خرید </span></a>
+                                <a href="#" class="wishlist-btn"><i class="far fa-heart"></i></a>
+                            </div>
+                        </div>
+                        <div class="pi-text text-center mb-5">
+                            <h4>سامسونگ A30s</h4>
+                            <del><span class="offer">3,800,000تومان</span></del>
+                            <br>
+                            <h5>3,600,000تومان</h5>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide swiper-slide-active" data-swiper-slide-index="3" style="width: 300.25px; margin-left: 20px;">
+                    <div class="product-item">
+                        <div class="pi-pic">
+                            <a href="product.html">
+                                <img src="~/Content/UserSideFiles/img/product/p23.jpg" alt="">
+                            </a>
+                            <div class="pi-links">
+                                <a href="cart.html" class="add-card"><i class="flaticon-bag"></i><span>اضافه کردن به سبد خرید </span></a>
+                                <a href="#" class="wishlist-btn"><i class="far fa-heart"></i></a>
+                            </div>
+                        </div>
+                        <div class="pi-text text-center mb-5">
+                            <h4>سامسونگ A30s</h4>
+                            <del><span class="offer">3,800,000تومان</span></del>
+                            <br>
+                            <h5>3,600,000تومان</h5>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide swiper-slide-next" data-swiper-slide-index="4" style="width: 300.25px; margin-left: 20px;">
+                    <div class="product-item">
+                        <div class="pi-pic">
+                            <a href="product.html">
+                                <img src="~/Content/UserSideFiles/img/product/p10.jpg" alt="">
+                            </a>
+                            <div class="pi-links">
+                                <a href="cart.html" class="add-card"><i class="flaticon-bag"></i><span>اضافه کردن به سبد خرید </span></a>
+                                <a href="#" class="wishlist-btn"><i class="far fa-heart"></i></a>
+                            </div>
+                        </div>
+                        <div class="pi-text text-center mb-5">
+                            <h4>سامسونگ A30s</h4>
+                            <del><span class="offer">3,800,000تومان</span></del>
+                            <br>
+                            <h5>3,600,000تومان</h5>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide" data-swiper-slide-index="5" style="width: 300.25px; margin-left: 20px;">
+                    <div class="product-item">
+                        <div class="pi-pic">
+                            <a href="product.html">
+                                <img src="~/Content/UserSideFiles/img/product/p46.jpg" alt="">
+                            </a>
+                            <div class="pi-links">
+                                <a href="cart.html" class="add-card"><i class="flaticon-bag"></i><span>اضافه کردن به سبد خرید </span></a>
+                                <a href="#" class="wishlist-btn"><i class="far fa-heart"></i></a>
+                            </div>
+                        </div>
+                        <div class="pi-text text-center mb-5">
+                            <h4>سامسونگ A30s</h4>
+                            <del><span class="offer">3,800,000تومان</span></del>
+                            <br>
+                            <h5>3,600,000تومان</h5>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide" data-swiper-slide-index="6" style="width: 300.25px; margin-left: 20px;">
+                    <div class="product-item">
+                        <div class="pi-pic">
+                            <a href="product.html">
+                                <img src="~/Content/UserSideFiles/img/product/p3.jpg" alt="">
+                            </a>
+                            <div class="pi-links">
+                                <a href="cart.html" class="add-card"><i class="flaticon-bag"></i><span>اضافه کردن به سبد خرید </span></a>
+                                <a href="#" class="wishlist-btn"><i class="far fa-heart"></i></a>
+                            </div>
+                        </div>
+                        <div class="pi-text text-center mb-5">
+                            <h4>سامسونگ A30s</h4>
+                            <del><span class="offer">3,800,000تومان</span></del>
+                            <br>
+                            <h5>3,600,000تومان</h5>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="0" style="width: 300.25px; margin-left: 20px;">
+
+                    <div class="product-item">
+                        <div class="pi-pic">
+                            <a href="product.html">
+                                <img src="~/Content/UserSideFiles/img/product/p23.jpg" alt="">
+                            </a>
+                            <div class="pi-links">
+                                <a href="cart.html" class="add-card"><i class="flaticon-bag"></i><span>اضافه کردن به سبد خرید </span></a>
+                                <a href="#" class="wishlist-btn"><i class="far fa-heart"></i></a>
+                            </div>
+                        </div>
+                        <div class="pi-text text-center mb-5">
+                            <h4>سامسونگ A30s</h4>
+                            <del><span class="offer">3,800,000تومان</span></del>
+                            <br>
+                            <h5>3,600,000تومان</h5>
+
+                        </div>
+                    </div>
+                </div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="1" style="width: 300.25px; margin-left: 20px;">
+                    <div class="product-item">
+                        <div class="pi-pic">
+                            <a href="product.html">
+                                <img src="~/Content/UserSideFiles/img/product/p8.jpg" alt="">
+                            </a>
+                            <div class="pi-links">
+                                <a href="cart.html" class="add-card"><i class="flaticon-bag"></i><span>اضافه کردن به سبد خرید </span></a>
+                                <a href="#" class="wishlist-btn"><i class="far fa-heart"></i></a>
+                            </div>
+                        </div>
+                        <div class="pi-text text-center mb-5">
+                            <h4>سامسونگ A30s</h4>
+                            <del><span class="offer">3,800,000تومان</span></del>
+                            <br>
+                            <h5>3,600,000تومان</h5>
+
+                        </div>
+                    </div>
+                </div><div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-prev" data-swiper-slide-index="2" style="width: 300.25px; margin-left: 20px;">
+                    <div class="product-item">
+                        <div class="pi-pic">
+                            <a href="product.html">
+                                <img src="~/Content/UserSideFiles/img/product/p37.jpg" alt="">
+                            </a>
+                            <div class="pi-links">
+                                <a href="cart.html" class="add-card"><i class="flaticon-bag"></i><span>اضافه کردن به سبد خرید </span></a>
+                                <a href="#" class="wishlist-btn"><i class="far fa-heart"></i></a>
+                            </div>
+                        </div>
+                        <div class="pi-text text-center mb-5">
+                            <h4>سامسونگ A30s</h4>
+                            <del><span class="offer">3,800,000تومان</span></del>
+                            <br>
+                            <h5>3,600,000تومان</h5>
+
+                        </div>
+                    </div>
+                </div><div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active" data-swiper-slide-index="3" style="width: 300.25px; margin-left: 20px;">
+                    <div class="product-item">
+                        <div class="pi-pic">
+                            <a href="product.html">
+                                <img src="~/Content/UserSideFiles/img/product/p23.jpg" alt="">
+                            </a>
+                            <div class="pi-links">
+                                <a href="cart.html" class="add-card"><i class="flaticon-bag"></i><span>اضافه کردن به سبد خرید </span></a>
+                                <a href="#" class="wishlist-btn"><i class="far fa-heart"></i></a>
+                            </div>
+                        </div>
+                        <div class="pi-text text-center mb-5">
+                            <h4>سامسونگ A30s</h4>
+                            <del><span class="offer">3,800,000تومان</span></del>
+                            <br>
+                            <h5>3,600,000تومان</h5>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets"><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 1"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 2"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 3"></span><span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 4"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 5"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 6"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 7"></span></div>
+            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+        </div>
+    </div>
+    <!-- Related product section end -->
+</body>
+</html>
+
+
+

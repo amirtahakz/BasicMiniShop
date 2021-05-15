@@ -1,0 +1,342 @@
+﻿
+@{
+    ViewBag.Title = "MyCart";
+}
+
+<!-- Page info -->
+	<div class="page-top-info">
+		<div class="container">
+			<h4>سبدخرید</h4>
+			<div class="site-pagination">
+				<a href="">Home</a> /
+				<a href=""> سبدخرید</a>
+			</div>
+		</div>
+	</div>
+	<!-- Page info end -->
+
+
+	<!-- cart section end -->
+	<section class="cart-section spad">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8">
+					<div class="cart-table">
+						<h3 class="text-justify">سبدخرید</h3>
+						<div class="cart-table-warp">
+							
+							@Html.Action("ShowMyCart" , "Cart")
+
+						</div>
+						<div class="total-cost">
+							<h6> جمع کل<span class="pr-3">13,500,000تومان</span></h6>
+						</div>
+					</div>
+				</div>
+                <div class="col-lg-4 card-right">
+                    <form class="promo-code-form">
+                        <input type="text" placeholder="کد تخفیف خود را وارد کنید  ">
+                        <button>اعمال</button>
+                    </form>
+                    @if (Session["UserId"] != null)
+                    {
+                        <a href="" class="site-btn" onclick="AddToPayment()">   پرداخت </a>
+                    }
+                    else
+                    {
+                        <a href="" class="site-btn" onclick="CheckLogin()">   لطفا به حساب کاربری خود وارد شوید </a>
+                    }
+                    <a href="" class="site-btn sb-dark">ادامه خرید </a>
+                </div>
+			</div>
+		</div>
+	</section>
+	<!-- cart section end -->
+
+	<!-- Related product section -->
+	<div class="container-fluid width-85 mx-auto my-5">
+		<div class="row w-100 mx-auto text-center py-5">
+			<div class="col-lg-4 col-md-4 col-3 text-left pt-4">
+				<img src="~/Content/UserSideFiles/img/Line 35.png" class="img-fluid w-md-25 mx-auto border-titr">
+			</div>
+			<div class="col-lg-4 col-md-4 col-6 pt-2">
+				<h2><b class="font-kalameBlack">  محصولات پربازدید </b></h2>
+			</div>
+			<div class="col-lg-4 col-md-4 col-3 text-right pt-4"> <img src="~/Content/UserSideFiles/img/Line 35.png" class="img-fluid w-md-25 mx-auto border-titr"></div>
+		</div>
+		<div class="swiper-container swiper-containerInterest swiper-container-initialized swiper-container-horizontal swiper-container-rtl" style="cursor: grab;">
+			<div class="swiper-wrapper" style="transform: translate3d(960.75px, 0px, 0px); transition-duration: 0ms;"><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="3" style="width: 300.25px; margin-left: 20px;"><div class="product-item">
+				<div class="pi-pic">
+					<a href="product.html">
+					<img src="~/Content/UserSideFiles/img/product/p23.jpg" alt="">
+					</a>
+					<div class="pi-links">
+						<a href="cart.html" class="add-card"><i class="flaticon-bag"></i><span>اضافه کردن به سبد خرید </span></a>
+						<a href="#" class="wishlist-btn"><i class="far fa-heart"></i></a>
+					</div>
+				</div>
+				<div class="pi-text text-center mb-5">
+					<h4>سامسونگ A30s</h4>
+					<del><span class="offer">3,800,000تومان</span></del>
+					<br>
+					<h5>3,600,000تومان</h5>
+				
+				</div>
+			</div></div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="4" style="width: 300.25px; margin-left: 20px;"><div class="product-item">
+				<div class="pi-pic">
+					<a href="product.html">
+					<img src="~/Content/UserSideFiles/img/product/p10.jpg" alt="">
+					</a>
+					<div class="pi-links">
+						<a href="cart.html" class="add-card"><i class="flaticon-bag"></i><span>اضافه کردن به سبد خرید </span></a>
+						<a href="#" class="wishlist-btn"><i class="far fa-heart"></i></a>
+					</div>
+				</div>
+				<div class="pi-text text-center mb-5">
+					<h4>سامسونگ A30s</h4>
+					<del><span class="offer">3,800,000تومان</span></del>
+					<br>
+					<h5>3,600,000تومان</h5>
+				
+				</div>
+			</div></div><div class="swiper-slide swiper-slide-duplicate swiper-slide-prev" data-swiper-slide-index="5" style="width: 300.25px; margin-left: 20px;"><div class="product-item">
+				<div class="pi-pic">
+					<a href="product.html">
+					<img src="~/Content/UserSideFiles/img/product/p46.jpg" alt="">
+					</a>
+					<div class="pi-links">
+						<a href="cart.html" class="add-card"><i class="flaticon-bag"></i><span>اضافه کردن به سبد خرید </span></a>
+						<a href="#" class="wishlist-btn"><i class="far fa-heart"></i></a>
+					</div>
+				</div>
+				<div class="pi-text text-center mb-5">
+					<h4>سامسونگ A30s</h4>
+					<del><span class="offer">3,800,000تومان</span></del>
+					<br>
+					<h5>3,600,000تومان</h5>
+				
+				</div>
+			</div></div><div class="swiper-slide swiper-slide-duplicate swiper-slide-active" data-swiper-slide-index="6" style="width: 300.25px; margin-left: 20px;"><div class="product-item">
+				<div class="pi-pic">
+					<a href="product.html">
+					<img src="~/Content/UserSideFiles/img/product/p3.jpg" alt="">
+					</a>
+					<div class="pi-links">
+						<a href="cart.html" class="add-card"><i class="flaticon-bag"></i><span>اضافه کردن به سبد خرید </span></a>
+						<a href="#" class="wishlist-btn"><i class="far fa-heart"></i></a>
+					</div>
+				</div>
+				<div class="pi-text text-center mb-5">
+					<h4>سامسونگ A30s</h4>
+					<del><span class="offer">3,800,000تومان</span></del>
+					<br>
+					<h5>3,600,000تومان</h5>
+				
+				</div>
+			</div></div>
+			  <div class="swiper-slide swiper-slide-next" data-swiper-slide-index="0" style="width: 300.25px; margin-left: 20px;">
+				  
+				<div class="product-item">
+				<div class="pi-pic">
+					<a href="product.html">
+					<img src="~/Content/UserSideFiles/img/product/p23.jpg" alt="">
+					</a>
+					<div class="pi-links">
+						<a href="cart.html" class="add-card"><i class="flaticon-bag"></i><span>اضافه کردن به سبد خرید </span></a>
+						<a href="#" class="wishlist-btn"><i class="far fa-heart"></i></a>
+					</div>
+				</div>
+				<div class="pi-text text-center mb-5">
+					<h4>سامسونگ A30s</h4>
+					<del><span class="offer">3,800,000تومان</span></del>
+					<br>
+					<h5>3,600,000تومان</h5>
+				
+				</div>
+			</div></div>
+			  <div class="swiper-slide" data-swiper-slide-index="1" style="width: 300.25px; margin-left: 20px;"><div class="product-item">
+				<div class="pi-pic">
+					<a href="product.html">
+					<img src="~/Content/UserSideFiles/img/product/p8.jpg" alt="">
+					</a>
+					<div class="pi-links">
+						<a href="cart.html" class="add-card"><i class="flaticon-bag"></i><span>اضافه کردن به سبد خرید </span></a>
+						<a href="#" class="wishlist-btn"><i class="far fa-heart"></i></a>
+					</div>
+				</div>
+				<div class="pi-text text-center mb-5">
+					<h4>سامسونگ A30s</h4>
+					<del><span class="offer">3,800,000تومان</span></del>
+					<br>
+					<h5>3,600,000تومان</h5>
+				
+				</div>
+			</div></div>
+			  <div class="swiper-slide" data-swiper-slide-index="2" style="width: 300.25px; margin-left: 20px;"><div class="product-item">
+				<div class="pi-pic">
+					<a href="product.html">
+					<img src="~/Content/UserSideFiles/img/product/p37.jpg" alt="">
+					</a>
+					<div class="pi-links">
+						<a href="cart.html" class="add-card"><i class="flaticon-bag"></i><span>اضافه کردن به سبد خرید </span></a>
+						<a href="#" class="wishlist-btn"><i class="far fa-heart"></i></a>
+					</div>
+				</div>
+				<div class="pi-text text-center mb-5">
+					<h4>سامسونگ A30s</h4>
+					<del><span class="offer">3,800,000تومان</span></del>
+					<br>
+					<h5>3,600,000تومان</h5>
+				
+				</div>
+			</div></div>
+			  <div class="swiper-slide" data-swiper-slide-index="3" style="width: 300.25px; margin-left: 20px;"><div class="product-item">
+				<div class="pi-pic">
+					<a href="product.html">
+					<img src="~/Content/UserSideFiles/img/product/p23.jpg" alt="">
+					</a>
+					<div class="pi-links">
+						<a href="cart.html" class="add-card"><i class="flaticon-bag"></i><span>اضافه کردن به سبد خرید </span></a>
+						<a href="#" class="wishlist-btn"><i class="far fa-heart"></i></a>
+					</div>
+				</div>
+				<div class="pi-text text-center mb-5">
+					<h4>سامسونگ A30s</h4>
+					<del><span class="offer">3,800,000تومان</span></del>
+					<br>
+					<h5>3,600,000تومان</h5>
+				
+				</div>
+			</div></div>
+			  <div class="swiper-slide" data-swiper-slide-index="4" style="width: 300.25px; margin-left: 20px;"><div class="product-item">
+				<div class="pi-pic">
+					<a href="product.html">
+					<img src="~/Content/UserSideFiles/img/product/p10.jpg" alt="">
+					</a>
+					<div class="pi-links">
+						<a href="cart.html" class="add-card"><i class="flaticon-bag"></i><span>اضافه کردن به سبد خرید </span></a>
+						<a href="#" class="wishlist-btn"><i class="far fa-heart"></i></a>
+					</div>
+				</div>
+				<div class="pi-text text-center mb-5">
+					<h4>سامسونگ A30s</h4>
+					<del><span class="offer">3,800,000تومان</span></del>
+					<br>
+					<h5>3,600,000تومان</h5>
+				
+				</div>
+			</div></div>
+			  <div class="swiper-slide swiper-slide-duplicate-prev" data-swiper-slide-index="5" style="width: 300.25px; margin-left: 20px;"><div class="product-item">
+				<div class="pi-pic">
+					<a href="product.html">
+					<img src="~/Content/UserSideFiles/img/product/p46.jpg" alt="">
+					</a>
+					<div class="pi-links">
+						<a href="cart.html" class="add-card"><i class="flaticon-bag"></i><span>اضافه کردن به سبد خرید </span></a>
+						<a href="#" class="wishlist-btn"><i class="far fa-heart"></i></a>
+					</div>
+				</div>
+				<div class="pi-text text-center mb-5">
+					<h4>سامسونگ A30s</h4>
+					<del><span class="offer">3,800,000تومان</span></del>
+					<br>
+					<h5>3,600,000تومان</h5>
+				
+				</div>
+			</div></div>
+			  <div class="swiper-slide swiper-slide-duplicate-active" data-swiper-slide-index="6" style="width: 300.25px; margin-left: 20px;"><div class="product-item">
+				<div class="pi-pic">
+					<a href="product.html">
+					<img src="~/Content/UserSideFiles/img/product/p3.jpg" alt="">
+					</a>
+					<div class="pi-links">
+						<a href="cart.html" class="add-card"><i class="flaticon-bag"></i><span>اضافه کردن به سبد خرید </span></a>
+						<a href="#" class="wishlist-btn"><i class="far fa-heart"></i></a>
+					</div>
+				</div>
+				<div class="pi-text text-center mb-5">
+					<h4>سامسونگ A30s</h4>
+					<del><span class="offer">3,800,000تومان</span></del>
+					<br>
+					<h5>3,600,000تومان</h5>
+				
+				</div>
+			</div></div>
+		   
+			<div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-next" data-swiper-slide-index="0" style="width: 300.25px; margin-left: 20px;">
+				  
+				<div class="product-item">
+				<div class="pi-pic">
+					<a href="product.html">
+					<img src="~/Content/UserSideFiles/img/product/p23.jpg" alt="">
+					</a>
+					<div class="pi-links">
+						<a href="cart.html" class="add-card"><i class="flaticon-bag"></i><span>اضافه کردن به سبد خرید </span></a>
+						<a href="#" class="wishlist-btn"><i class="far fa-heart"></i></a>
+					</div>
+				</div>
+				<div class="pi-text text-center mb-5">
+					<h4>سامسونگ A30s</h4>
+					<del><span class="offer">3,800,000تومان</span></del>
+					<br>
+					<h5>3,600,000تومان</h5>
+				
+				</div>
+			</div></div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="1" style="width: 300.25px; margin-left: 20px;"><div class="product-item">
+				<div class="pi-pic">
+					<a href="product.html">
+					<img src="~/Content/UserSideFiles/img/product/p8.jpg" alt="">
+					</a>
+					<div class="pi-links">
+						<a href="cart.html" class="add-card"><i class="flaticon-bag"></i><span>اضافه کردن به سبد خرید </span></a>
+						<a href="#" class="wishlist-btn"><i class="far fa-heart"></i></a>
+					</div>
+				</div>
+				<div class="pi-text text-center mb-5">
+					<h4>سامسونگ A30s</h4>
+					<del><span class="offer">3,800,000تومان</span></del>
+					<br>
+					<h5>3,600,000تومان</h5>
+				
+				</div>
+			</div></div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="2" style="width: 300.25px; margin-left: 20px;"><div class="product-item">
+				<div class="pi-pic">
+					<a href="product.html">
+					<img src="~/Content/UserSideFiles/img/product/p37.jpg" alt="">
+					</a>
+					<div class="pi-links">
+						<a href="cart.html" class="add-card"><i class="flaticon-bag"></i><span>اضافه کردن به سبد خرید </span></a>
+						<a href="#" class="wishlist-btn"><i class="far fa-heart"></i></a>
+					</div>
+				</div>
+				<div class="pi-text text-center mb-5">
+					<h4>سامسونگ A30s</h4>
+					<del><span class="offer">3,800,000تومان</span></del>
+					<br>
+					<h5>3,600,000تومان</h5>
+				
+				</div>
+			</div></div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="3" style="width: 300.25px; margin-left: 20px;"><div class="product-item">
+				<div class="pi-pic">
+					<a href="product.html">
+					<img src="~/Content/UserSideFiles/img/product/p23.jpg" alt="">
+					</a>
+					<div class="pi-links">
+						<a href="cart.html" class="add-card"><i class="flaticon-bag"></i><span>اضافه کردن به سبد خرید </span></a>
+						<a href="#" class="wishlist-btn"><i class="far fa-heart"></i></a>
+					</div>
+				</div>
+				<div class="pi-text text-center mb-5">
+					<h4>سامسونگ A30s</h4>
+					<del><span class="offer">3,800,000تومان</span></del>
+					<br>
+					<h5>3,600,000تومان</h5>
+				
+				</div>
+			</div></div></div>
+			<!-- Add Pagination -->
+			<div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets"><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 1"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 2"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 3"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 4"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 5"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 6"></span><span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 7"></span></div>
+		  <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+	   </div>
+	<!-- Related product section end -->
+

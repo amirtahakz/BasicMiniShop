@@ -1,0 +1,12 @@
+﻿@model IEnumerable<myshop.Models.CategoryName>
+
+<div class="filter-widget">
+    <h2 class="fw-title">دسته بندی</h2>
+    <ul class="category-menu">
+        @foreach (var item in Model)
+        {
+
+            <li><a href="#" onclick="ShowSelectedCategory(@item.IdCategoryName)">@item.Subject</a></li>
+        }
+    </ul>
+</div>
